@@ -1,0 +1,8 @@
+import {
+  GET_GOALS_REQUEST,
+  GET_GOALS_SUCCESS,
+  GET_GOALS_FAILURE,
+  getAllGoals,
+} from './goal';
+
+export {GET_GOALS_REQUEST, GET_GOALS_SUCCESS, GET_GOALS_FAILURE, getAllGoals};
