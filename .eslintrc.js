@@ -18,6 +18,9 @@ module.exports = {
     'react/destructuring-assignment': [0],
     'react/forbid-prop-types': [0],
     'react/no-unescaped-entities': ['error', {forbid: ['>', '}']}],
+    'react/state-in-constructor': 'off',
+    'react/static-property-placement': 'off',
+    'react/jsx-props-no-spreading': 'off',
     quotes: [
       'error',
       'single',
