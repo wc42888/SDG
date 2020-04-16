@@ -7,18 +7,20 @@
  */
 
 import React from 'react';
-import {StatusBar, SafeAreaView, StyleSheet, Text} from 'react-native';
+import {StatusBar, SafeAreaView, StyleSheet} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import MainApp from './src/screens';
 
 const App = () => {
   const {safeAreaView} = styles;
 
   return (
-    <>
+    <NavigationContainer>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView style={safeAreaView}>
-        <Text>sdg app</Text>
+        <MainApp />
       </SafeAreaView>
-    </>
+    </NavigationContainer>
   );
 };
 
