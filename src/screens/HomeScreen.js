@@ -6,15 +6,17 @@ import {
   ImageBackground,
   StyleSheet,
   ScrollView,
+  ActivityIndicator,
 } from 'react-native';
 import {getAllGoals} from '../redux/actions';
 import {LARGE_SIZE, goalName} from '../config';
 import {GoalTile} from '../components';
 
 const HomeScreen = () => {
-  const {backgroundImage, content, title} = styles;
+  const {backgroundImage, content, title, activityIndicator} = styles;
   const dispatch = useDispatch();
   const goals = useSelector((state) => state.goal);
+  const isLoadingGoals = useSelector((state) => state.loading.GET_GOALS);
 
   useEffect(() => {
     dispatch(getAllGoals());
@@ -43,13 +45,25 @@ const HomeScreen = () => {
     </View>
   );
 
+  const renderContent = () =>
+    isLoadingGoals ? (
+      <View style={activityIndicator}>
+        <ActivityIndicator size="large" color="black" />
+        <Text size={LARGE_SIZE}>loading our goals</Text>
+      </View>
+    ) : (
+      <>
+        {renderTitle()}
+        <ScrollView style={content}>{renderGoalTiles()}</ScrollView>
+      </>
+    );
+
   return (
     <ImageBackground
       // eslint-disable-next-line global-require
       source={require('../assets/images/sustain.jpg')}
       style={backgroundImage}>
-      {renderTitle()}
-      <ScrollView style={content}>{renderGoalTiles()}</ScrollView>
+      {renderContent()}
     </ImageBackground>
   );
 };
@@ -73,6 +87,11 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     marginTop: 50,
     justifyContent: 'space-around',
+  },
+  activityIndicator: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 
