@@ -1,5 +1,13 @@
-import React from 'react';
-import {Text, StyleSheet, View} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {
+  Text,
+  StyleSheet,
+  View,
+  TouchableOpacity,
+  Animated,
+  Easing,
+} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 import {LARGE_SIZE} from '../config';
 
 // eslint-disable-next-line react/prop-types
@@ -14,11 +22,32 @@ const GoalTile = ({goal, disabled = false}) => {
     disabled: disabledStyle,
   } = styles;
 
+  const [tileAnimate] = useState(new Animated.Value(0.5));
+
+  useEffect(() => {
+    Animated.timing(tileAnimate, {
+      toValue: 1,
+      duration: 1000,
+      easing: Easing.bounce,
+    }).start();
+  }, []);
+
+  const navigation = useNavigation();
+
+  const navigateToTarget = () => navigation.navigate('Target', {goal});
+
   const getDisabledStyle = () => (disabled ? disabledStyle : {});
 
+  const transformStyle = {
+    transform: [{scale: tileAnimate}],
+  };
+
   return (
-    <View style={[container, getDisabledStyle()]}>
-      <View style={content}>
+    <TouchableOpacity
+      style={[container, getDisabledStyle(), transformStyle]}
+      onPress={navigateToTarget}
+      disabled={disabled}>
+      <Animated.View style={content}>
         <View style={goalNameContainer}>
           <Text style={goalCode} testID="goalCode">
             {goal.code}
@@ -27,11 +56,11 @@ const GoalTile = ({goal, disabled = false}) => {
             {goal.name}
           </Text>
         </View>
-      </View>
+      </Animated.View>
       <View style={icon}>
         <Text>icon placeholder</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

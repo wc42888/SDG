@@ -1,4 +1,3 @@
-import {Text} from 'react-native';
 import React from 'react';
 import {mount} from 'enzyme';
 import GoalTile from './GoalTile';
