@@ -32,6 +32,7 @@
     "@react-native-community/eslint-config": "^0.0.5",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^24.9.0",
+    "detox": "^16.2.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "eslint": "^6.8.0",
@@ -56,5 +57,18 @@
     "setupFilesAfterEnv": [
       "<rootDir>/src/setupTests.js"
     ]
+  },
+  "detox": {
+    "configurations": {
+      "ios.sim.debug": {
+        "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/sdg.app",
+        "build": "xcodebuild -workspace ios/sdg.xcworkspace -scheme sdg -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+        "type": "ios.simulator",
+        "device": {
+          "type": "iPhone 11 Pro"
+        }
+      }
+    },
+    "test-runner": "jest"
   }
 }
