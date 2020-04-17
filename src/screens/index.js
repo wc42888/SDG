@@ -7,9 +7,17 @@ const Stack = createStackNavigator();
 
 const MainApp = () => {
   return (
-    <Stack.Navigator headerMode="none" initialRouteName="Home">
-      <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen name="Target" component={TargetScreen} />
+    <Stack.Navigator initialRouteName="Home">
+      <Stack.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Target"
+        component={TargetScreen}
+        options={({route}) => ({title: route.params.goal.name})}
+      />
     </Stack.Navigator>
   );
 };
