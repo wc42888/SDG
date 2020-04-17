@@ -5,4 +5,20 @@ import {
   getAllGoals,
 } from './goal';
 
-export {GET_GOALS_REQUEST, GET_GOALS_SUCCESS, GET_GOALS_FAILURE, getAllGoals};
+import {
+  GET_TARGETS_REQUEST,
+  GET_TARGETS_SUCCESS,
+  GET_TARGETS_FAILURE,
+  getAllTargets,
+} from './target';
+
+export {
+  GET_GOALS_REQUEST,
+  GET_GOALS_SUCCESS,
+  GET_GOALS_FAILURE,
+  getAllGoals,
+  GET_TARGETS_REQUEST,
+  GET_TARGETS_SUCCESS,
+  GET_TARGETS_FAILURE,
+  getAllTargets,
+};
