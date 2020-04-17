@@ -1,5 +1,6 @@
 const initlaState = {
   GET_GOALS: false,
+  GET_TARGETS: false,
 };
 
 export default function loadingReducer(state = initlaState, action) {
