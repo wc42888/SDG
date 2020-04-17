@@ -2,14 +2,20 @@ import React from 'react';
 import {mount} from 'enzyme';
 import GoalTile from './GoalTile';
 
+const mockNavigation = jest.fn();
+
+jest.mock('@react-navigation/native', () => ({
+  useNavigation: () => mockNavigation,
+}));
+
 describe('test GoalTile component', () => {
   let goalTile;
   const goalName = 'goalName';
   const goalCode = '1';
-  const goal = {code: goalCode};
+  const goal = {code: goalCode, name: goalName};
 
   beforeEach(() => {
-    goalTile = mount(<GoalTile goalName={goalName} goal={goal} />);
+    goalTile = mount(<GoalTile goal={goal} />);
   });
 
   it('should render correct goal code text', () => {
