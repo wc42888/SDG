@@ -46,7 +46,8 @@ const GoalTile = ({goal, disabled = false}) => {
     <TouchableOpacity
       style={[container, getDisabledStyle(), transformStyle]}
       onPress={navigateToTarget}
-      disabled={disabled}>
+      disabled={disabled}
+      testID={`SDG${goal.code}`}>
       <Animated.View style={content}>
         <View style={goalNameContainer}>
           <Text style={goalCode} testID="goalCode">

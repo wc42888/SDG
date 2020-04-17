@@ -42,6 +42,7 @@ const TargetScreen = ({route}) => {
         renderItem={renderItem}
         refreshing={isLoadingTargets}
         onRefresh={fetchTargets}
+        testID="targetList"
       />
     </View>
   );

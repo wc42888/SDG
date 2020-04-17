@@ -54,7 +54,9 @@ const HomeScreen = () => {
     ) : (
       <>
         {renderTitle()}
-        <ScrollView style={content}>{renderGoalTiles()}</ScrollView>
+        <ScrollView testID="content" style={content}>
+          {renderGoalTiles()}
+        </ScrollView>
       </>
     );
 
@@ -62,7 +64,8 @@ const HomeScreen = () => {
     <ImageBackground
       // eslint-disable-next-line global-require
       source={require('../assets/images/sustain.jpg')}
-      style={backgroundImage}>
+      style={backgroundImage}
+      testID="backgroundImage">
       {renderContent()}
     </ImageBackground>
   );
