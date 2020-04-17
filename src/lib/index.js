@@ -1,4 +1,4 @@
-import {getGoals} from './api';
+import {getGoals, getTargets} from './api';
 import showNetworkError from './showNetworkError';
 
-export {getGoals, showNetworkError};
+export {getGoals, showNetworkError, getTargets};

@@ -7,3 +7,6 @@ const client = axios.create({
 });
 
 export const getGoals = () => client.get('/Goal/List');
+
+export const getTargets = (goalCode) =>
+  client.get(`/Goal/${goalCode}/Target/List?includechildren=true`);
